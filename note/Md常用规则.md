@@ -42,9 +42,7 @@
 
 #### 超链接
 行内式
-[Google](https://www.google.com)搜索引擎
-参数式
-[Google]: https://www.google.com "搜索引擎"
+* [Google](https://www.google.com)搜索引擎
 
 #### 代码框
 少量代码可以使用单个反引号包起来
