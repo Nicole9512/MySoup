@@ -105,5 +105,24 @@ Man::callstatic();  // output： yyy
 
 ###### 20.常见的Http状态码
 
-###### 21.快速排序
-
+###### 21.冒泡排序（bubble sort）
+* 冒泡排序是从列表的开头处开始，并且比较一对数据项，直到移动到列表的末尾。每当成对的两项之间的排序不正确时，算法就交换其位置，依次完成排序。
+```
+class Sort
+{
+    function bubbleSort($numbers) 
+    {
+        $len = count($numbers);
+        for ($i = 0; $i < $len - 1; $i++) {
+            for ($j = 0; $j < $len - $i - 1; $j++) {
+                if ($numbers[$j] > $numbers[$j + 1]) {
+                    $temp = $numbers[$j];
+                    $numbers[$j] = $numbers[$j + 1];
+                    $numbers[$j + 1] = $temp;
+                }
+            }
+        }
+        return $numbers;
+    }
+}
+```
