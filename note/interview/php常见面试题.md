@@ -44,6 +44,55 @@ PHP常见面试题
 ###### 9.魔术方法
 * [魔术方法](http://www.php.net/manual/zh/language.oop5.magic.php)
 * __construct() 构造函数：一个类中定义一个方法作为构造函数。具有构造函数的类会在每次创建新对象（实例化）时先调用此方法，所以非常适合在使用对象之前做一些初始化工作。
+* __set() 设置不可写的属性时候，自动调用
+```
+<?php
+
+class Person
+{
+    public $name = '周伯通';
+    private $_sex = '男';
+
+    function __set($property, $val)
+    {
+        echo '个人信息: ' . $property . ' ' . $val . PHP_EOL;
+    }
+
+    function __get($property)
+    {
+        echo '取得信息: ' . $property . PHP_EOL;
+    }
+}
+
+$class = new Person();
+// 这调用__set() 输出 个人信息: 女
+$class->_sex = '女';
+// 这里调用__get() 输出 取得信息: 女
+$class->_sex;
+// 这里如果是$class->name, 这样的话会就没有权限控制, 对本类来说__get, __set可以添加额外的方法达到另外一些效果
+
+
+class People
+{
+    public $name = '李莫愁';
+    private $_sex = '女';
+
+    function __set($name, $val)
+    {
+        $this->$name = '个人信息: ' . $val . PHP_EOL;
+    }
+
+    function getSex()
+    {
+        echo $this->_sex;
+    }
+}
+
+$class = new People();
+$class->_sex = '变态';
+echo $class->getSex(); // 个人信息: 变态
+```
+* __get() 设置不可读的属性时，自动调用
 
 ###### 10.static this self 区别
 * 注意点：静态方法执行之后变量的值不会丢失，只会初始化一次，这个值对所有实例都是有效的。
