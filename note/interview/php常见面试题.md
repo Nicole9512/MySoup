@@ -94,10 +94,7 @@ $class = new People();
 $class->_sex = '变态';
 echo $class->getSex(); // 个人信息: 变态
 ```
-<<<<<<< HEAD
 * __toString() 该方法用于一个类被当成字符串使用时候怎样回应，该方法必须返回字符串。
-=======
->>>>>>> modify code
 * __isset() 当对不可访问属性调用 isset() 或 empty() 时，__isset() 会被调用。
 * __unset() 当对不可访问属性调用 unset() 时，__unset() 会被调用。
 
@@ -193,6 +190,8 @@ Man::callstatic();  // output： yyy
 ###### 21.冒泡排序（bubble sort）
 * 冒泡排序是从列表的开头处开始，并且比较一对数据项，直到移动到列表的末尾。每当成对的两项之间的排序不正确时，算法就交换其位置，依次完成排序。
 ```
+<?php
+
 class Sort
 {
     function bubbleSort($numbers) 
@@ -262,18 +261,28 @@ class Sort
 
 ##### 29.插入排序
 ```
-class Sort 
+<?php
+
+class Sort
 {
-    public function selectSort(array $arr)
+    function swap(array &$arr, $a, $b)
     {
-        for ($i = 0; $i < count($arr), $i++) {
-            
-        }
-
-
+        $temp = $arr[$a];
+        $arr[$a] = $arr[$b];
+        $arr[$b] = $temp;
     }
 
-
-
+    function InsertSort(array &$arr)
+    {
+        //数组中第一个元素作为一个已经存在的有序表
+        for ($i = 1; $i < count($arr); $i++) {
+            $temp = $arr[$i];
+            for ($j = $i - 1; $j >= 0 && $arr[$j] > $temp; $j--) {
+                $arr[$j + 1] = $arr[$j];
+            }
+            $arr[$j + 1] = $temp;
+        }
+    }
 }
+
 ```
