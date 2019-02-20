@@ -94,13 +94,10 @@ $class = new People();
 $class->_sex = '变态';
 echo $class->getSex(); // 个人信息: 变态
 ```
-<<<<<<< HEAD
-* __get() 设置不可读的属性时，自动调用
 * __toString() 该方法用于一个类被当成字符串使用时候怎样回应，该方法必须返回字符串。
-=======
 * __isset() 当对不可访问属性调用 isset() 或 empty() 时，__isset() 会被调用。
 * __unset() 当对不可访问属性调用 unset() 时，__unset() 会被调用。
->>>>>>> modify code
+
 
 ###### 10.static this self 区别
 * 注意点：静态方法执行之后变量的值不会丢失，只会初始化一次，这个值对所有实例都是有效的。
@@ -157,12 +154,8 @@ Man::callstatic();  // output： yyy
 
 ###### 13.抽象类和接口类的使用场景
 
-<<<<<<< HEAD
 ###### 14.Trait
 * 从基类继承的成员会被trait插入的成员覆盖。优先顺序是来自当前类的成员覆盖了trait的方法，而trait覆盖被继承的方法。多个trait都插入了同名方法的话。会产生错误。需要用insteadof操作符来指定。trait可以使用抽象方法来做强制要求。
-=======
-###### 14.Trait 特质
->>>>>>> modify code
 
 ###### 15.echo print print_r var_dump
 * echo 输出由逗号分隔的一个或者多个字符串，没有返回值。
