@@ -114,7 +114,6 @@ class Person
     public static function name()
     {
         echo "xxx";
-        echo "<br />";
     }
     public static function callself()
     {
@@ -132,7 +131,6 @@ class Man extends Person
     public static function name()
     {
         echo "yyy";
-        echo "<br />";
     }
 }
  
@@ -168,7 +166,7 @@ Man::callstatic();  // output： yyy
 
 ###### 17.static作用
 
-###### 18.__toString() 作用
+###### 18.
 
 ###### 19.单引号与双引号的区别
 * 单引号不解释变量，双引号解释变量。
@@ -194,15 +192,20 @@ Man::callstatic();  // output： yyy
 
 class Sort
 {
+    function swap(array &$arr, $a, $b)
+    {
+        $temp = $arr[$a];
+        $arr[$a] = $arr[$b];
+        $arr[$b] = $temp;
+    }
+
     function bubbleSort($numbers) 
     {
         $len = count($numbers);
         for ($i = 0; $i < $len - 1; $i++) {
             for ($j = 0; $j < $len - $i - 1; $j++) {
                 if ($numbers[$j] > $numbers[$j + 1]) {
-                    $temp = $numbers[$j];
-                    $numbers[$j] = $numbers[$j + 1];
-                    $numbers[$j + 1] = $temp;
+                    $this->swap($numbers, $i, $j)
                 }
             }
         }
@@ -259,19 +262,12 @@ class Sort
 * cookie:用来存储连续訪問一个頁面时所使用，是存储在客户端，对于Cookie来说是存储在用户WIN的Temp目录中的。
 * 两者都可通过时间来设置时间长短。
 
-##### 29.插入排序
+##### 29.插入排序(Insert sort)
 ```
 <?php
 
 class Sort
 {
-    function swap(array &$arr, $a, $b)
-    {
-        $temp = $arr[$a];
-        $arr[$a] = $arr[$b];
-        $arr[$b] = $temp;
-    }
-
     function InsertSort(array &$arr)
     {
         //数组中第一个元素作为一个已经存在的有序表
