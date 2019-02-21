@@ -16,6 +16,9 @@ PHP常见面试题
 * [is_array()](http://php.net/manual/zh/function.is-array.php) 判断是否是数组
 * [explode()](http://php.net/manual/zh/function.explode.php) 使用一个字符串分割另外一个字符串
 * [implode()](http://php.net/manual/zh/function.implode.php) 把一个一维数组转化为字符串
+* [array_change_key_case()](http://php.net/manual/zh/function.array-change-key-case.php) 将数组中的所有键名修改为全大写或小写
+
+
 
 
 ###### 4.常用的字符串处理函数
