@@ -223,17 +223,23 @@ class Sort
 * GATEWAY_INTERFACE' 服务器使用的 CGI 规范的版本；例如，“CGI/1.1”。
 * 'SERVER_PROTOCOL' 请求页面时通信协议的名称和版本。例如，“HTTP/1.0”。
 * 'REQUEST_METHOD' 访问页面使用的请求方法；例如，“GET”, “HEAD”，“POST”，“PUT”。
-* REQUEST_TIME' 请求开始时的时间戳。从 PHP 5.1.0 起可用。
-* 'QUERY_STRING' query string（查询字符串），如果有的话，通过它进行页面访问。
-* 'HTTP_ACCEPT' 当前请求头中 Accept: 项的内容，如果存在的话。
 * 'HTTP_ACCEPT_CHARSET' 当前请求头中 Accept-Charset: 项的内容，如果存在的话。例如：“iso-8859-1,*,utf-8”。
 * 'HTTP_ACCEPT_ENCODING' 当前请求头中 Accept-Encoding: 项的内容，如果存在的话。例如：“gzip”。
 * 'HTTP_ACCEPT_LANGUAGE' 当前请求头中 Accept-Language: 项的内容，如果存在的话。例如：“en”。
 * 'HTTP_CONNECTION' 当前请求头中 Connection: 项的内容，如果存在的话。例如：“Keep-Alive”。
 * 'HTTP_HOST' 当前请求头中 Host: 项的内容，如果存在的话。
+* 'SCRIPT_NAME' 包含当前脚本的路径。这在页面需要指向自己时非常有用。__FILE__ 常量包含当前脚本(例如包含文件)的完整路径和文件名。
+
+* 'SERVER_ADDR' 服务器的ip地址。
+* 'SERVER_NAME' 服务器名称。
+* 'REQUEST_TIME' 请求开始时的时间戳。从 PHP 5.1.0 起可用。
+* 'QUERY_STRING' query string（查询字符串），如果有的话，通过它进行页面访问。
+* 'HTTP_REFERER' 上一次请求的页面，从哪儿来的
+* 'HTTP_ACCEPT' 当前请求头中 Accept: 项的内容，如果存在的话。
+* 'HTTP_USER_AGENT' 请求头信息。
 * 'REMOTE_ADDR' 浏览当前页面的用户的 IP 地址。
 * 'REQUEST_URI' URI 用来指定要访问的页面。例如 “/index.html”。
-* 'SCRIPT_NAME' 包含当前脚本的路径。这在页面需要指向自己时非常有用。__FILE__ 常量包含当前脚本(例如包含文件)的完整路径和文件名。
+* 'PATH_INFO' 充当URL路径。？？
 
 ##### 23.重写
 * final修饰的类方法不可被子类重写。
@@ -285,4 +291,70 @@ class Sort
     }
 }
 
+```
+
+##### 30.引用变量 &
+* php中引用变量时候，只有write的时候才会进行copy*（COW机制）。object本身就是引用传递，所以不适用，要复制则需要使用clone。
+```
+$a = range(1, 10);
+
+$b = $a;           // 这时候，$a和$b指向同一个内存地址，但是如果使用 $b = &$a;使用引用，那么就会指向同一内存地址。
+
+
+$a = range(1, 10);  // 这时候，$a和$b在不同的内存地址
+
+```
+
+##### 31.unset()
+* unset()只会取消引用，不会销毁内存空间。
+```
+$a = 1;
+
+$b = &$a;
+
+unset($a);
+
+echo $b;
+```
+
+##### 32.Heredoc 和 Newdoc
+* Heredoc 类似于双引号 
+* Newdoc  类似于单引号
+
+##### 33.基本数据类型相关
+* float不能用于类似于等值计算等方面。（因为计算机最后进行二进制转换时候，精度会损失）
+
+##### 34.超全局数组
+
+##### 34.预定义常量
+
+##### 35.static
+* 仅初始化一次
+* 初始化时候需要赋值
+* 每次执行函数该值会保留
+* static修饰的变量是局部的，仅在函数内部有效
+* 可以记录函数调用次数，用来结束函数递归
+
+##### 36.正则表达式
+* 作用：分割、查找、匹配、替换字符串
+* 分隔符：正斜线（/）、hash符号（#）以及取反符号（~）
+
+##### 37.文件操作
+* fopen()： r/r+、w/w+、a/a+、x/x+、b、t
+* fwrite()、fput()：写入
+* fread()、fgets()、fgetc()：读取
+* fclose()：关闭
+* 不需要fopen()打开的函数：file_get_contents()、file_put_contents()
+* file()：文件读取到数组
+* readfile()：读取文件输出到缓冲区
+* 访问远程文件allow_url_fopen，http只能读，ftp可以只读或者只写
+* 名称相关：basename() dirname() pathinfo()
+* 目录读取：oepndir() readdir() closedir() rewinddir()
+* 目录创建删除：mkdir() rmdir()
+* 文件大小：filesize()
+* 文件拷贝：copy()
+* 文件类型：filetype()
+* 重命名目录：rename()
+```
+遍历删除目录下的文件
 ```
