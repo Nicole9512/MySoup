@@ -220,7 +220,7 @@ class Sort
 
 ##### 22.$_SERVER
 * $_SERVER 是一个包含了诸如头信息(header)、路径(path)、以及脚本位置(script locations)等等信息的数组。这个数组中的项目由 Web 服务器创建。
-* GATEWAY_INTERFACE' 服务器使用的 CGI 规范的版本；例如，“CGI/1.1”。
+* 'GATEWAY_INTERFACE' 服务器使用的 CGI 规范的版本；例如，“CGI/1.1”。
 * 'SERVER_PROTOCOL' 请求页面时通信协议的名称和版本。例如，“HTTP/1.0”。
 * 'REQUEST_METHOD' 访问页面使用的请求方法；例如，“GET”, “HEAD”，“POST”，“PUT”。
 * 'HTTP_ACCEPT_CHARSET' 当前请求头中 Accept-Charset: 项的内容，如果存在的话。例如：“iso-8859-1,*,utf-8”。
