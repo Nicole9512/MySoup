@@ -27,7 +27,8 @@ PHP常见面试题
 * [md5()](http://php.net/manual/zh/function.md5.php) 计算字符串md5的散列值
 * [trim()](http://php.net/manual/zh/function.trim.php) 去处字符串首尾的空白字符`" "普通空格符, \t制表符, \n换行符, \r回车符, \0空字节符, \x0B垂直制表符`
 * [strpos()](http://php.net/manual/zh/function.strpos.php) 查找字符串首次出现的位置
-* [str_repeat](http://php.net/manual/zh/function.str-repeat.php) 把一个字符串重复n次
+* [str_repeat()](http://php.net/manual/zh/function.str-repeat.php) 把一个字符串重复n次
+* [sprintf()](http://php.net/manual/zh/function.sprintf.php) 格式化输出字符串
 
 ###### 5.mb类函数
 * 多字节字符串函数，其实就是可以处理utf8mb4的函数。PHP内置的字符串长度函数strlen无法正确处理中文字符串，它得到的只是字符串所占的字节数。对于GB2312的中文编码，strlen得到的值是汉字个数的2倍，而对于UTF-8编码的中文，就是3倍的差异了（在 UTF-8编码下，一个汉字占3个字节）。
