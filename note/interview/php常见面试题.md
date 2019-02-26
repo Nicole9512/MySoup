@@ -27,6 +27,7 @@ PHP常见面试题
 * [md5()](http://php.net/manual/zh/function.md5.php) 计算字符串md5的散列值
 * [trim()](http://php.net/manual/zh/function.trim.php) 去处字符串首尾的空白字符`" "普通空格符, \t制表符, \n换行符, \r回车符, \0空字节符, \x0B垂直制表符`
 * [strpos()](http://php.net/manual/zh/function.strpos.php) 查找字符串首次出现的位置
+* [strrpos()] 查找字符串最后一次出现的位置
 * [str_repeat()](http://php.net/manual/zh/function.str-repeat.php) 把一个字符串重复n次
 * [sprintf()](http://php.net/manual/zh/function.sprintf.php) 格式化输出字符串
 
@@ -188,7 +189,9 @@ Man::callstatic();  // output： yyy
 * 403 : 服务器拒绝执行请求，即没有权限。
 * 404 : 请求失败，请求的数据在服务器上未发现。
 * 500 : 服务器错误。一般服务器端程序执行错误。
-* 503 : 服务器临时维护或过载。这个状态时临时性的。*
+* 502 : nginx找不到php-fpm或者资源耗尽(php-fpm连接全部用完)
+* 503 : 服务器临时维护或过载。这个状态时临时性的。
+* 504 : 请求超时。
 
 ###### 21.冒泡排序（bubble sort）
 * 冒泡排序是从列表的开头处开始，并且比较一对数据项，直到移动到列表的末尾。每当成对的两项之间的排序不正确时，算法就交换其位置，依次完成排序。
@@ -197,13 +200,6 @@ Man::callstatic();  // output： yyy
 
 class Sort
 {
-    function swap(array &$arr, $a, $b)
-    {
-        $temp = $arr[$a];
-        $arr[$a] = $arr[$b];
-        $arr[$b] = $temp;
-    }
-
     function bubbleSort($numbers) 
     {
         $len = count($numbers);
@@ -325,7 +321,29 @@ echo $b;
 ##### 33.基本数据类型相关
 * float不能用于类似于等值计算等方面。（因为计算机最后进行二进制转换时候，精度会损失）
 
-##### 34.超全局数组
+##### 34.预定义变量[超全局数组/变量]
+* $_GOLBALS 
+```
+$GLOBALS 是PHP的一个超级全局变量组，在一个PHP脚本的全部作用域中都可以访问。
+$GLOBALS 是一个包含了全部变量的全局组合数组。变量的名字就是数组的键。
+```
+* $_GET 
+```
+通过 URL 参数(QueryString)传递给当前脚本的变量的数组。
+$_GET 同样被广泛应用于收集表单数据，在HTML form标签的指定该属性："method="get"。
+```
+* $_POST 
+```
+$_POST 被广泛应用于收集表单数据，在HTML form标签的指定该属性："method="post"。
+```
+* $_COOKIE
+```
+通过 HTTP Cookies 方式传递给当前脚本的变量的数组。
+```
+* $_SESSION
+```
+调用前使用session_start()
+```
 
 ##### 34.预定义常量
 
