@@ -17,7 +17,8 @@ PHP常见面试题
 * [explode()](http://php.net/manual/zh/function.explode.php) 使用一个字符串分割另外一个字符串
 * [implode()](http://php.net/manual/zh/function.implode.php) 把一个一维数组转化为字符串
 * [array_change_key_case()](http://php.net/manual/zh/function.array-change-key-case.php) 将数组中的所有键名修改为全大写或小写
-
+* [array_intersect()](http://php.net/manual/zh/function.array-intersect.php) 计算数组交集
+* [array_key_exists()](http://php.net/manual/zh/function.array-key-exists.php) 检查数组里是否有指定的键名或索引
 
 
 
@@ -30,6 +31,7 @@ PHP常见面试题
 * [strrpos()] 查找字符串最后一次出现的位置
 * [str_repeat()](http://php.net/manual/zh/function.str-repeat.php) 把一个字符串重复n次
 * [sprintf()](http://php.net/manual/zh/function.sprintf.php) 格式化输出字符串
+* [is_numeric()](http://php.net/manual/zh/function.is-numeric.php) 检测变量是否为数字或数字字符串
 
 ###### 5.mb类函数
 * 多字节字符串函数，其实就是可以处理utf8mb4的函数。PHP内置的字符串长度函数strlen无法正确处理中文字符串，它得到的只是字符串所占的字节数。对于GB2312的中文编码，strlen得到的值是汉字个数的2倍，而对于UTF-8编码的中文，就是3倍的差异了（在 UTF-8编码下，一个汉字占3个字节）。
