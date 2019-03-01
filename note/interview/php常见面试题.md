@@ -27,6 +27,7 @@ PHP常见面试题
 
 * [md5()](http://php.net/manual/zh/function.md5.php) 计算字符串md5的散列值
 * [trim()](http://php.net/manual/zh/function.trim.php) 去处字符串首尾的空白字符`" "普通空格符, \t制表符, \n换行符, \r回车符, \0空字节符, \x0B垂直制表符`
+* [rtrim()](https://secure.php.net/manual/zh/function.rtrim.php) 删除字符串末端的空白字符（或者其他字符）
 * [strpos()](http://php.net/manual/zh/function.strpos.php) 查找字符串首次出现的位置
 * [strrpos()] 查找字符串最后一次出现的位置
 * [str_repeat()](http://php.net/manual/zh/function.str-repeat.php) 把一个字符串重复n次
@@ -299,7 +300,6 @@ $a = range(1, 10);
 
 $b = $a;           // 这时候，$a和$b指向同一个内存地址，但是如果使用 $b = &$a;使用引用，那么就会指向同一内存地址。
 
-
 $a = range(1, 10);  // 这时候，$a和$b在不同的内存地址
 
 ```
@@ -379,3 +379,6 @@ $_POST 被广泛应用于收集表单数据，在HTML form标签的指定该属�
 ```
 遍历删除目录下的文件
 ```
+
+##### 38.系统类函数
+* [microtime()](https://secure.php.net/manual/zh/function.microtime.php) 返回当前 Unix 时间戳和微秒数
