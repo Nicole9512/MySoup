@@ -382,3 +382,16 @@ $_POST 被广泛应用于收集表单数据，在HTML form标签的指定该属�
 
 ##### 38.系统类函数
 * [microtime()](https://secure.php.net/manual/zh/function.microtime.php) 返回当前 Unix 时间戳和微秒数
+
+##### 39.完整的HTTP请求生命周期
+* 1.对www.baidu.com这个网址进行DNS域名解析，得到对应的IP地址
+
+* 2.根据这个IP，找到对应的服务器，发起TCP的三次握手
+
+* 3.建立TCP连接后发起HTTP请求
+
+* 4.服务器响应HTTP请求，浏览器得到html代码
+
+* 5.解析静态资源，浏览器解析html代码，并请求html代码中的资源（如js、css图片等）（先得到html代码，才能去找这些资源）
+
+* 6.浏览器对页面进行渲染呈现给用户
