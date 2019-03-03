@@ -291,3 +291,10 @@ redis> MGET redis mongodb mysql     # 不存在的 mysql 返回 nil
 2) "mongodb.org"
 3) (nil)
 ```
+
+# 二、列表（LIST）
+### LPUSH 
+* 将一个或多个值 value 插入到列表 key 的表头
+* 如果有多个 value 值，那么各个 value 值按从左到右的顺序依次插入到表头： 比如说，对空列表 mylist 执行命令 LPUSH mylist a b c ，列表的值将是 c b a ，这等同于原子性地执行 LPUSH mylist a 、 LPUSH mylist b 和 LPUSH mylist c 三个命令。
+
+ 
