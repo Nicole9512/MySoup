@@ -261,7 +261,7 @@ class Sort
 * require_once 和 include_once 可以避免重复包含同一文件。
 
 ##### 27.POST 和 GET
-* get是把参数数据队列加到提交表单的action属性所指的url中，值和表单内各个字段一一对应，从url中可以看到；post是通过HTTPPOST机制，将表单内各个字段与其内容防止在HTML的head中一起传送到action属性所指的url地址，用户看不到这个过程。
+* get是把参数数据队列加到提交表单的action属性所指的url中，值和表单内各个字段一一对应，从url中可以看到；post是通过HTTP POST机制，将表单内各个字段与其内容防止在HTML的head中一起传送到action属性所指的url地址，用户看不到这个过程。
 * 对于get方式，服务器端用Request.QueryString获取变量的值，对于post方式，服务器端用Request.Form获取提交的数据。
 * get传送的数据量较小，post传送的数据量较大，一般被默认不受限制，但在理论上，IIS4中最大量为80kb，IIS5中为1000k。
 * get安全性非常低，post安全性较高。
@@ -361,21 +361,33 @@ $_POST 被广泛应用于收集表单数据，在HTML form标签的指定该属�
 * 分隔符：正斜线（/）、hash符号（#）以及取反符号（~）
 
 ##### 37.文件操作
-* fopen()： r/r+、w/w+、a/a+、x/x+、b、t
-* fwrite()、fput()：写入
-* fread()、fgets()、fgetc()：读取
+* fopen()：fopen() 函数打开文件或者 URL。如果打开失败，本函数返回 FALSE。
+```
+"r"	    只读方式打开，将文件指针指向文件头。
+"r+"	读写方式打开，将文件指针指向文件头。
+"w"	    写入方式打开，将文件指针指向文件头并将文件大小截为零。如果文件不存在则尝试创建之。
+"w+"	读写方式打开，将文件指针指向文件头并将文件大小截为零。如果文件不存在则尝试创建之。
+"a"	    写入方式打开，将文件指针指向文件末尾。如果文件不存在则尝试创建之。
+"a+"	读写方式打开，将文件指针指向文件末尾。如果文件不存在则尝试创建之。
+"x"	    创建并以写入方式打开，将文件指针指向文件头。如果文件已存在，则 fopen() 调用失败并返回 FALSE，并生成一条 E_WARNING 级别的错误信息。如果文件不存在则尝试创建之。
+"x+"	创建并以读写方式打开，将文件指针指向文件头。如果文件已存在，则 fopen() 调用失败并返回 FALSE，并生成一条 E_WARNING 级别的错误信息。如果文件不存在则尝试创建之。
+```
+* fwrite()：写入文件（可安全用于二进制文件），与fput()是别名关系。
+* fread()：以字节位计算长度，按照指定的长度和次数读取数据，遇到结尾或完成指定长度读取后停止。
+* fgets()：从文件指针中读取一行。
 * fclose()：关闭
-* 不需要fopen()打开的函数：file_get_contents()、file_put_contents()
-* file()：文件读取到数组
-* readfile()：读取文件输出到缓冲区
+* 不需要fopen()打开的函数：file_get_contents()、file_put_contents()【不会在尾部追加】
+* file()：文件读取到数组，一行一个元素。
+* readfile()：读取文件输出到缓冲区。
 * 访问远程文件allow_url_fopen，http只能读，ftp可以只读或者只写
 * 名称相关：basename() dirname() pathinfo()
 * 目录读取：oepndir() readdir() closedir() rewinddir()
-* 目录创建删除：mkdir() rmdir()
+* opendir()：打开一个目录句柄，可用于之后的 closedir()，readdir() 和 rewinddir() 调用中。
+* 目录创建删除：mkdir()、rmdir()
 * 文件大小：filesize()
-* 文件拷贝：copy()
-* 文件类型：filetype()
-* 重命名目录：rename()
+* copy()：复制文件，返回bool值。
+* filetype()：返回文件类型。
+* rename()：重命名文件，返回bool值。
 ```
 遍历删除目录下的文件
 ```
@@ -385,13 +397,8 @@ $_POST 被广泛应用于收集表单数据，在HTML form标签的指定该属�
 
 ##### 39.完整的HTTP请求生命周期
 * 1.对www.baidu.com这个网址进行DNS域名解析，得到对应的IP地址
-
 * 2.根据这个IP，找到对应的服务器，发起TCP的三次握手
-
 * 3.建立TCP连接后发起HTTP请求
-
 * 4.服务器响应HTTP请求，浏览器得到html代码
-
 * 5.解析静态资源，浏览器解析html代码，并请求html代码中的资源（如js、css图片等）（先得到html代码，才能去找这些资源）
-
 * 6.浏览器对页面进行渲染呈现给用户
