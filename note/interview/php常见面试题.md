@@ -359,6 +359,10 @@ $_POST 被广泛应用于收集表单数据，在HTML form标签的指定该属�
 ##### 36.正则表达式
 * 作用：分割、查找、匹配、替换字符串
 * 分隔符：正斜线（/）、hash符号（#）以及取反符号（~）
+```
+手机号: "/^1[2-9]\d{9}$/"
+邮箱: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/
+```
 
 ##### 37.文件操作
 * fopen()：fopen() 函数打开文件或者 URL。如果打开失败，本函数返回 FALSE。
@@ -389,7 +393,35 @@ $_POST 被广泛应用于收集表单数据，在HTML form标签的指定该属�
 * filetype()：返回文件类型。
 * rename()：重命名文件，返回bool值。
 ```
-遍历删除目录下的文件
+遍历删除文件夹
+
+<?php
+// $dir：要删除的文件的目录
+function recursiveDelete($dir)
+{    
+     // 打开指定目录
+   if ($handle = @opendir($dir))
+   {
+     while (($file = readdir($handle)) !== false)
+     {
+         if (($file == ".") || ($file == ".."))
+         {
+           continue;
+         }
+         if (is_dir($dir . '/' . $file))
+         {
+           // 递归
+           recursiveDelete($dir . '/' . $file);
+         }
+         else
+         {
+           unlink($dir . '/' . $file); // 删除文件
+         }
+     }
+     @closedir($handle);
+     rmdir ($dir); 
+   }
+}
 ```
 
 ##### 38.系统类函数
