@@ -10,6 +10,10 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import mysql.connector
 
+"""
+这是一个多线程京东自营店爬虫
+"""
+
 q = queue.Queue()
 
 # 输入url
