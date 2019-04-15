@@ -51,9 +51,9 @@ server {
     root         /home/ubuntu/www/eshop;
 
     location  ^~ /web/ {
-	root /home/ubuntu/www/eshop/yii;
-	index index.php;
-    try_files $uri $uri/ @web;
+	    root /home/ubuntu/www/eshop/yii;
+	    index index.php;
+        try_files $uri $uri/ @web;
 
 	location ~ \.php$ {
 			fastcgi_pass 127.0.0.1:9071;
