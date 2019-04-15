@@ -148,5 +148,11 @@ $sent_http_last_modified
 $sent_http_location
 $sent_http_transfer_encoding
 ```
+* 调试极为有用的:
+```
+$document_root           #当前请求的文档根目录或别名
+$request_filename        #当前连接请求的文件路径，由root或alias指令与URI请求生成，现代框架一般请求的都是index.php
+$uri                     #请求中的当前URI(不带请求参数，参数位于$args)，可以不同于浏览器传递的$request_uri的值，它可以通过内部重定向，或者使用index指令进行修改，$uri不包含主机名，如"/foo/bar.html"。$uri一般是我们配置好nginx真正想要的结果，如果不是，说明肯定错了。
 
+```
 
