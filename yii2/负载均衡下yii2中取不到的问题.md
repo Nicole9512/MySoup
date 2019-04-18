@@ -1,4 +1,5 @@
 yii2的yii\redis\session扩展
+======================================
 
 ## 问题
 * 因为项目重构迁移，之前用户的session都是直接通过PHP自带的`$_SESSION`来存储的，>迁移到yii2之后，发现`$session = Yii::$app->session;`的实例居然取不到和`$_SESSION`。
