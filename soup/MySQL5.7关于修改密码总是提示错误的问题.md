@@ -1,4 +1,4 @@
-MySQL修改密码总提示错误
+MySQL修改密码总提示错误(Ubuntu)
 =============================
 
 ## 问题
@@ -12,3 +12,5 @@ update user set authentication_string=password("你的密码") where user="root"
 
 ## 解决
 * 找到配置文件并修改`sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf`，在`[mysqld]`这一块中加入`skip-grant-tables`，重启MySQL服务，解决问题。
+
+
